@@ -61,7 +61,7 @@ When a commit is pushed to master branch, Semaphore CI will run tests and lint. 
 ## Built With
 
 * [Docker](https://docs.docker.com/) - Containerization
-* [Node](https://maven.apache.org/) - JavaScript Runtime
+* [Node](https://nodejs.org/en/about/) - JavaScript Runtime
 * [Express](https://expressjs.com/) - Web Framework
 
 ## Versioning
