@@ -60,13 +60,13 @@ When a commit is pushed to master branch, Semaphore CI will run tests and lint. 
 
 ## Built With
 
-* [Docker](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Node](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Docker](https://docs.docker.com/) - Containerization
+* [Node](https://maven.apache.org/) - JavaScript Runtime
+* [Express](https://expressjs.com/) - Web Framework
 
 ## Versioning
 
-[SemVer](http://semver.org/) is used for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+[SemVer](http://semver.org/) is used for versioning. For the versions available, see the [tags on this repository](https://github.com/aidengaripoli/alpha-api/tags).
 
 ## Authors
 
