@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json(err)
 })
 
-app.listen(PORT, () => console.log(`API listening on ${PORT}`))
+const server = app.listen(PORT, () => console.log(`API listening on ${PORT}`))
 
 // quit on ctrl-c when running docker in terminal
 process.on('SIGINT', function onSigint () {
@@ -49,7 +49,7 @@ process.on('SIGTERM', function onSigterm () {
 
 // shut down server
 function shutdown () {
-  app.close(function onServerClosed (err) {
+  server.close(function onServerClosed (err) {
     if (err) {
       console.error(err)
       process.exitCode = 1
