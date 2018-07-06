@@ -1,0 +1,41 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // Execute command in docker
+      "label": "Docker npm test",
+      "type": "shell",
+      "command": "docker-compose exec api npm test",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      // Execute command in docker
+      "label": "Docker npm run test-watch",
+      "type": "shell",
+      "command": "docker-compose exec api npm run test-watch",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      // Execute command in docker
+      "label": "Docker terminal in container (bash)",
+      "type": "shell",
+      "command": "docker-compose exec api bash",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      }
+    },
+  ]
+}
