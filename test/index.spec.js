@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 const request = require('supertest')
 
-const app = require('../src/index.js')
+const app = require('../src/app.js')
 
 describe('API', function () {
   describe('GET /', function () {

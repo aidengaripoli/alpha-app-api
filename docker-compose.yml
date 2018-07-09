@@ -18,7 +18,18 @@ services:
       - notused:/opt/app/node_modules
     environment:
       - NODE_ENV=development
+      - JWT_SECRET=secret
+      - DB_HOST=database
+      - DB_NAME=alpha
     user: root
+
+  database:
+    image: mongo
+    volumes:
+      - database-data:/data/db
+    ports:
+      - "27017:27017"
 
 volumes:
     notused:
+    database-data:
