@@ -24,17 +24,17 @@ const userSchema = new mongoose.Schema({
   age: {
     type: Number,
     trim: true,
-    required: 'Please enter your age'
+    default: 18
   },
   height: {
     type: Number,
     trim: true,
-    required: 'Please enter your height'
+    default: 160
   },
   weight: {
     type: Number,
     trim: true,
-    required: 'Please enter your weight'
+    default: 50
   }
 })
 

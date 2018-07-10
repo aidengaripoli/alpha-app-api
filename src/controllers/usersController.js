@@ -26,19 +26,7 @@ exports.validateRegister = [
 
     body('passwordConfirm', 'Passwords do not match')
       .exists()
-      .custom((password, { req }) => password === req.body.password),
-
-    body('age', 'Invalid Age')
-      .exists().withMessage('Age cannot be empty')
-      .isInt({ min: 1 }).withMessage('Age must be at least 1'),
-
-    body('height', 'Height must be at least 100 cm')
-      .exists().withMessage('Height cannot be empty')
-      .isInt({ min: 100 }),
-
-    body('weight', 'Weight must be at least 30 kg')
-      .exists().withMessage('Weight cannot be empty')
-      .isInt({ min: 30 })
+      .custom((password, { req }) => password === req.body.password)
   ],
   validationErrors
 ]
