@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  api:
+    image: alpha_api
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    command: npm test
+    volumes:
+      - .:/opt/app:delegated
+      - notused:/opt/app/node_modules
+    environment:
+      - JWT_SECRET=secret
+      - DB_USER=test
+      - DB_PASS=test
+      - DB_HOST=database
+      - DB_NAME=test
+      - DB_PORT=27017
+    depends_on:
+      - database
+    user: root
+
+  database:
+    image: mongo
+    ports:
+      - "27017"
+    # logging:
+      # driver: "none"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=test
+    volumes:
+      - ./test_database_init.sh:/docker-entrypoint-initdb.d/test_database_init.sh
+
+volumes:
+    notused:

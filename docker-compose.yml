@@ -19,14 +19,25 @@ services:
     environment:
       - NODE_ENV=development
       - JWT_SECRET=secret
+      - DB_USER=node
+      - DB_PASS=secret
       - DB_HOST=database
       - DB_NAME=alpha
+      - DB_PORT=27017
+    depends_on:
+      - database
     user: root
 
   database:
     image: mongo
+    restart: always
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+    - MONGO_INITDB_ROOT_PASSWORD=adminpass
+    - MONGO_INITDB_DATABASE=alpha
     volumes:
       - database-data:/data/db
+      - ./database_init.sh:/docker-entrypoint-initdb.d/database_init.sh
     ports:
       - "27017:27017"
 
