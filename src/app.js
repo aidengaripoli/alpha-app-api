@@ -4,7 +4,9 @@ const morgan = require('morgan')
 const cors = require('cors')
 const { OK, BAD_REQUEST, NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-status-codes')
 
-require('./database')
+require('./database').then(() => {
+  app.emit('ready') // maybe only emit after EVERYTHING is ready, including routes and middleware
+})
 require('./models')
 require('./passport')
 
@@ -30,6 +32,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/health', (req, res) => {
   res.status(OK).end()
+  // TODO: implement an actual healthcheck
 })
 
 // Not found handler

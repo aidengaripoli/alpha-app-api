@@ -2,7 +2,11 @@ const app = require('./app')
 
 const { PORT } = process.env
 
-const server = app.listen(PORT, () => console.log(`API listening on ${PORT}`))
+let server = null
+
+app.on('ready', () => {
+  server = app.listen(PORT, () => console.log(`API listening on ${PORT}`))
+})
 
 // quit on ctrl-c when running docker in terminal
 process.on('SIGINT', function onSigint () {
