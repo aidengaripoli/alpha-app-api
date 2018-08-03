@@ -4,9 +4,13 @@ const morgan = require('morgan')
 const cors = require('cors')
 const { OK, BAD_REQUEST, NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-status-codes')
 
-require('./database').then(() => {
-  app.emit('ready') // maybe only emit after EVERYTHING is ready, including routes and middleware
+const database = require('./database')
+
+database.connectWithRetry().then(() => {
+  console.log('APP: MONGODB CONNECTED.. APP EMITTING READY')
+  app.emit('ready')
 })
+
 require('./models')
 require('./passport')
 

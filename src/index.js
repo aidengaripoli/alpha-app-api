@@ -5,6 +5,7 @@ const { PORT } = process.env
 let server = null
 
 app.on('ready', () => {
+  console.log('INDEX: APP READY')
   server = app.listen(PORT, () => console.log(`API listening on ${PORT}`))
 })
 

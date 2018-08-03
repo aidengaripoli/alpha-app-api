@@ -6,6 +6,8 @@ const User = mongoose.model('User')
 const app = require('../src/app.js')
 
 exports.register = function (done) {
+  console.log('TEST (REG): RUNNING...')
+
   request(app)
     .post('/user/register')
     .send({
