@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: |
+          docker-compose -f docker-compose.test.yml -p ci build
+          docker-compose -f docker-compose.test.yml -p ci up --abort-on-container-exit
+      - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t alpha-api .
+          docker tag alpha-api aidengaripoli/alpha-api:$TAG
+      - run: docker push aidengaripoli/alpha-api:$TAG
