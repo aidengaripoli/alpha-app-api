@@ -7,8 +7,6 @@ describe('tests', function () {
   })
 
   describe('/user', function () {
-    console.log('TEST: APP READY, STARTING TESTS...')
-
     const tests = require('./user.spec')
 
     it('should create a user and return a token', tests.register)

@@ -6,7 +6,7 @@ const { OK, BAD_REQUEST, NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-stat
 
 const database = require('./database')
 
-database.connectWithRetry().then(() => {
+database.connect().then(() => {
   console.log('APP: MONGODB CONNECTED.. APP EMITTING READY')
   app.emit('ready')
 })

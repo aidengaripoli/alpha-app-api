@@ -17,17 +17,23 @@ const options = {
 const connectWithRetry = () => {
   console.log('DB: CONNECTING TO MONGODB...')
   return mongoose.connect(connectionURI, options)
-    .then(() => {
-      console.log('DB: MONGODB CONNECTED!')
-    })
     .catch(err => {
       console.error('DB: MONGODB ERROR:' + err)
       console.log('DB: RETRYING CONNECTION...')
-      setTimeout(connectWithRetry, 3000)
+      setTimeout(connectWithRetry, 5000)
     })
 }
 
-module.exports = { connectWithRetry }
+const connect = () => {
+  return new Promise(resolve => {
+    connectWithRetry().then(() => {
+      console.log('DB: MONGODB CONNECTED!')
+      resolve()
+    })
+  })
+}
+
+module.exports = { connect }
 
 // module.exports = function () {
 //   mongoose.connect(connectionURI, { useNewUrlParser: true })
