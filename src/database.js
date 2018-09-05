@@ -14,8 +14,10 @@ const options = {
   useNewUrlParser: true
 }
 
+// if the database service is not ready yet,
+// try to connect again after 5 seconds and
+// keep retrying.
 const connectWithRetry = () => {
-  console.log('DB: CONNECTING TO MONGODB...')
   return mongoose.connect(connectionURI, options)
     .catch(err => {
       console.error('DB: MONGODB ERROR:' + err)
@@ -27,23 +29,11 @@ const connectWithRetry = () => {
 const connect = () => {
   return new Promise(resolve => {
     connectWithRetry().then(() => {
-      console.log('DB: MONGODB CONNECTED!')
       resolve()
     })
   })
 }
 
-module.exports = { connect }
-
-// module.exports = function () {
-//   mongoose.connect(connectionURI, { useNewUrlParser: true })
-//     .then(() => {
-//       mongoose.connection.once('open', () => {
-//         console.log('CONNECTED TO DATABASE')
-//       })
-//     })
-// }
-
-// module.exports = mongoose.connect(connectionURI, { useNewUrlParser: true })
-//   .then(() => console.log('CONNECTED'))
-//   .catch(err => console.error(err))
+module.exports = {
+  connect
+}

@@ -33,17 +33,14 @@ Hit localhost:80 to see it working
 $ curl localhost:80
 ```
 
-
 ## Running the tests
-
-Explain how to run the automated tests for this system
 
 ### Integration tests
 
 To run the integration tests
 
-```
-$ docker-compose exec api npm test
+```bash
+$ bash integration_tests.sh
 ```
 
 ### Linting
@@ -56,19 +53,20 @@ $ docker-compose exec api npm run lint -s
 
 The -s option supresses the npm error if eslint exits with a non-zero exit code (due to code linting errors)
 
+## TODO
+
+- [ ] Add exercises/muscles models and endpoints
+- [ ] Add redis as a caching layer for exercises/muscles data
+
 ## Deployment
 
-When a commit is pushed to master branch, Semaphore CI will run tests and lint. If successful a new tagged docker image will be built and pushed to Docker Hub.
+When a commit is pushed to master branch, CircleCI will run tests and lint. If successful a new tagged docker image will be built and pushed to Docker Hub. Portainer is then used to pull the new image and redeploy the docker stack.
 
 ## Built With
 
 * [Docker](https://docs.docker.com/) - Containerization
 * [Node](https://nodejs.org/en/about/) - JavaScript Runtime
 * [Express](https://expressjs.com/) - Web Framework
-
-## Versioning
-
-[SemVer](http://semver.org/) is used for versioning. For the versions available, see the [tags on this repository](https://github.com/aidengaripoli/alpha-api/tags).
 
 ## Authors
 
