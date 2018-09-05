@@ -1,6 +1,7 @@
 # Alpha Fitness REST API
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/6f873a38-8d89-4fa3-8396-00fac430b75f/2076448/badge.svg)](https://semaphoreci.com/alpha-fitness/alpha-api)
+[![CircleCI](https://circleci.com/gh/aidengaripoli/alpha-api/tree/master.svg?style=svg)](https://circleci.com/gh/aidengaripoli/alpha-api/tree/master)
 
 REST API backend for the Alpha Fitness clients
 
